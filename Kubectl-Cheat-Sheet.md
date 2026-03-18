@@ -1,7 +1,7 @@
 # Kubectl Command Verification Report
 
 ## Environment
-- **Operating System:** Microsoft Windows 10.0.26100.4351
+- **Operating System:** Microsoft Windows 10
 - **Cluster Type:** Azure Kubernetes Service (AKS)
 
 ## 1. `kubectl cluster-info`
