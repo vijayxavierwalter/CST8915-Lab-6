@@ -361,6 +361,8 @@ product-service   1/1     1            1           81m
 rabbitmq          1/1     1            1           81m
 store-front       1/1     1            1           81m
 ```
+## How this setup is possible  
+The updated store-front application uses Nginx as a reverse proxy. The Dockerfile builds the Vue frontend and packages it into an Nginx image with a custom nginx.conf. In that configuration, the root path / serves the frontend files, while /products, /orders, and /rabbitmq/ are proxied to the internal Kubernetes services product-service:3030, order-service:3000, and rabbitmq:15672. This allows multiple application components to be accessed through the same external IP address (`4.172.1.197`), with Nginx routing traffic by URL path 
 
 ## Summary
 The essential `kubectl` commands were tested successfully on the AKS cluster. All application pods are in the **Running** state, all deployments are **Available**, and the **store-front** service has a public **LoadBalancer** IP address (`4.172.1.197`), confirming that the Algonquin Pet Store application was deployed successfully.
